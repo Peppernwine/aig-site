@@ -1,0 +1,14 @@
+Options -MultiViews
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} /$
+RewriteRule (.*)/ $1 [R=301]
+
+RewriteCond %{HTTP_HOST} localhost
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)? $1.php [NC,L]
+
+RewriteCond %{HTTP_HOST} !localhost
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)? /$1.php [NC,L]

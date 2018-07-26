@@ -1,0 +1,226 @@
+.sec-page-header {
+    background-image: url("../images/catering1-1200.jpg");
+}
+
+table {
+    table-layout: fixed;
+    width:100%;
+}
+
+.op-hours p {
+    margin:0px;
+    color:#333;
+    font-style: italic;
+    text-align: center;
+}
+
+
+/*
+.menu-category h3 {
+    text-align: left;
+    color:#b70038;
+    background:white;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+*/
+.menu-category h3:after {
+    font-family: "Font Awesome 5 Free";
+    content : "\f002";
+    font-size:1rem;
+    font-weight: bold;
+    font-style: normal;
+    margin:0px 0px 0px 10px;
+    text-decoration:none;
+    cursor: pointer;
+}
+
+.hot::after{
+    background-image: url('../images/spice-hot.png');
+    background-size: 22px 23px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    display: inline-block;
+    width: 23px;
+    height: 24px;
+    content:" ";
+}
+
+
+.extra-hot::after{
+    background-image: url('../images/spice-extra-hot.png');
+    background-size: 28px 24px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    display: inline-block;
+    width: 28px;
+    height: 24px;
+    content:" ";
+}
+.chefs-special::after{
+    background-image: url('../images/chefs-special3.png');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    content:"";
+}
+
+
+.gluten-free::after{
+    background-image: url('../images/gluten-free.png');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    opacity: 1;
+    vertical-align: top;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.menu-item-group {
+    padding: .25rem;
+    transition: background-color 350ms;
+    border-bottom : 1px solid lightgray;
+}
+
+.menu-name-group {
+    display: inline-block;
+    font-size: 1rem;
+    width:70%;
+}
+
+.menu-name{
+    font-family: lato-bol-webfont;
+    display: inline-block;
+    font-weight:800;
+    width:auto;
+    vertical-align: middle
+}
+
+.menu-flags {
+    font-family: lato-bol-webfont;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.menu-price {
+    font-family: lato-bol-webfont;
+    display:inline-block;
+    width:20%;
+    vertical-align: middle;
+    text-align: right;
+    color : #4f8509;
+}
+
+.menu-description {
+    color:gray;
+    color:#333;
+    font-size:.825rem;
+    width:100%;
+}
+
+.radio-inline.menu-option {
+    width:10rem;
+}
+
+.add-to-bag {
+    display:inline-block;
+    width:5%;
+    color : #b70038;
+    vertical-align: middle;
+    text-align: center;
+    visibility: hidden;
+}
+
+#order-checkout-dialog {
+    padding-bottom : 1.25rem;
+}
+
+
+.charges {
+    height:9rem;
+    height:auto;
+    margin: .5rem;
+    padding:.5rem;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+   // background-color: rgba(133, 187, 101,.3);
+}
+
+.charge-summary-label {
+    display: inline-block;width:calc(100% - 5% - 5rem - 5px) ;text-align:left;font-weight: bold;
+}
+
+.charge-summary-value {
+    display: inline-block;margin-left:5%;padding:2px 5px;width:5rem;text-align:right;
+}
+
+#order-selection-dialog {
+    padding-top:10rem!important;
+    padding-top:1rem!important;
+}
+
+#order-selection-toolbar {
+    top:6.5rem!important;
+}
+
+#order-bag-dialog {
+    padding-bottom : 2rem;
+}
+
+#order-selection-form ,#order-bag-form,#order-checkout-form {
+    overflow-y:scroll;
+}
+
+#btnShowOrderBag {
+    height:3rem;
+    position:fixed;
+    right:-1px;
+    top:17rem;
+    z-index: 5;
+}
+
+#order-selection-container {
+    z-index: 99;
+}
+
+#tbl-orders {
+    margin:.5rem;
+    padding: 0 .5rem;
+}
+
+@media (hover:hover) {
+    /* Mouse devices */
+    .menu-item-group:hover {
+        border-left : 2px solid #b70038;
+        background-color: #f4f4f4;
+        border-right:1px solid lightgray;
+    }
+    .menu-item-group:hover .add-to-bag{
+        visibility: visible;
+    }
+
+}
+
+@media(min-width: 768px) {
+    .container .menu{
+        width:60%;
+    }
+
+    #order-selection-dialog,#order-checkout-dialog,#order-bag-dialog {
+        height:80%;
+        width:60%;
+    }
+
+
+    #btnShowOrderBag {
+        position:fixed;
+        right:0px;
+        top:17rem;
+        height:3rem;
+        z-index: 5;
+    }
+}

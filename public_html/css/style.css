@@ -1,0 +1,106 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100%;
+    width:100%;
+    margin:0px;
+    padding:0px;
+}
+
+.page-header {
+    text-align: center;
+}
+
+.nav-bar {
+    text-align: center;
+    list-style: none;
+    padding:0px;
+    width:100%;
+    margin:1rem auto;
+}
+
+.nav-bar li  {
+    text-align: center;
+    margin-right:10px;
+    width:auto;
+    display: inline-block;
+}
+
+/*
+.form-section {
+    margin:2rem 2rem;
+    width : auto;
+}
+
+
+.form-control {
+    width:100%;
+    display: block;
+}
+
+
+.form-control, .single-line-form-control,.submit-button  {
+    display: inline-block;
+    height:2.5rem;
+    margin: .75rem 0px;
+    border-width: 1px;
+    border-color: #666;
+    border-color: rgba(0,0,0,0.6);
+    font-family: inherit;
+    font-size:inherit;
+}
+
+
+.text-form-control ,.form-control, .single-line-form-control{
+    padding: .5rem 1rem;
+}
+
+
+.submit-button {
+    width:auto;
+    //float:right;
+    display: inline-block;
+    vertical-align: middle;
+    margin:0;
+    padding: 0 1.5rem;
+}
+
+*/
+.clear-fix:after {
+    content:"";
+    display: table;
+    clear:both;
+}
+
+/*
+input[type=checkbox].form-control, input[type=checkbox].single-line-form-control {
+    height:1.5rem;
+    width:1.25rem;
+    margin: 0 .25rem 0rem 0;
+    vertical-align: middle;
+}
+
+#info-section{
+    width:100%;
+    text-align: center;
+    margin:0px;
+}
+
+*/
+.success-message{
+    color: green;
+}
+
+.warning-message{
+    color: orange;
+}
+
+.error-message{
+    color: red;
+}

@@ -1,0 +1,15 @@
+{
+    "require": {
+        "php": ">=7.1.0",
+        "paragonie/random_compat":"^2.0",
+        "phpmailer/phpmailer": "~6.0",
+        "smarty/smarty":"~3.0",
+        "twilio/sdk":"5.4.2",
+        "vlucas/phpdotenv": "^2.5",
+        "tecnickcom/tcpdf": "^6.2.13",
+        "phaxio/phaxio": "2.0.1",
+        "stripe/stripe-php": "^6.10",
+        "monolog/monolog": "^1.23",
+        "swiftmailer/swiftmailer": "^5.0"
+    }
+}

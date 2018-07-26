@@ -1,0 +1,113 @@
+footer {background: #333; padding:1.5rem 8%;font: 1rem LatoRegular,Arial,Helvetica,sans-serif; color:#fff }
+footer a, footer a:visited {color:#fff; text-decoration:none;text-transform: uppercase}
+footer a:hover, footer a:active {color:#fff;text-decoration: none;
+	background-color: rgba(255,255,255, .3);
+	border: 1px solid #ffc65d;
+}
+
+
+footer > section {width:33%;float: left;}
+footer >  section > nav > ul {width:100%;float: left;}
+
+
+footer ul {padding:0;list-style: none}
+
+footer li, footer li a {padding:2px 0px}
+
+footer section:last-of-type {
+    text-align: center;
+    float:none;
+    display: table;
+    width:100%;
+}
+
+footer li ul li:first-child {
+    font-weight: 600;
+}
+
+#footer-logo-section img {
+    opacity:.6;
+    height:100px;
+}
+
+#footer-logo-section p {
+    font-weight:600;
+    text-align: center;
+}
+
+#footer-logo-section ul {
+    display: inline-block;
+}
+
+#social-media-links li {
+    width:12rem;
+    text-transform: uppercase;
+    background: #3B5998;
+}
+
+#social-media-links a {
+    color:#fff;
+    padding-right: 10px; 
+    font-size:.75rem    
+}
+
+#social-media-links i {
+    padding:5px;
+    color:#fff;
+}
+
+/*
+#scroll-to-top-btn{
+    display: none;
+    position: fixed;
+    bottom: 25px;
+    right: 48%;
+    z-index: 9;
+    font-size: 1rem;
+    outline: none;
+    background-color: #b70038;
+    transition:height 500ms;
+    opacity: .75;
+    color: white;
+    cursor: pointer;
+    padding: 12px;
+    width:60px;
+    height:60px;
+.   box-shadow : 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.22);
+    border-radius:50%;
+    border:2px solid white;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+}
+*/
+#scroll-to-top-btn{
+    position: fixed;
+    bottom: 30px;
+    right: 1px;
+    z-index: 9;
+    font-size: 2.5rem;
+    outline: none;
+
+    transition:height 500ms;
+    color: #b70038;
+    cursor: pointer;
+    padding: 0px;
+    border-radius:50%;
+    opacity: .75;
+    display: none;
+}
+
+#scroll-to-top-btn:hover,#scroll-to-top-btn:focus {
+    opacity: 1;
+    box-shadow : 0 2px 5px 0 rgba(0, 0, 0, 0.26), 0 2px 10px 0 rgba(0, 0, 0, 0.22);
+}
+
+@media (min-width:768px)  {
+    footer > section {width:33%;float: left;}
+    footer {padding:1.5rem 15%;}
+
+    #scroll-to-top-btn{
+        font-size: 3.5rem;
+    }
+    
+}

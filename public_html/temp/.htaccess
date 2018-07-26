@@ -1,0 +1,8 @@
+# Hide the contents of directories
+IndexIgnore *
+
+# Deny access to filenames starting with *
+<FilesMatch "*">
+Order allow, deny
+Deny from all
+</FilesMatch>

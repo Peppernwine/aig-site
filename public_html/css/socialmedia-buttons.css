@@ -1,0 +1,50 @@
+/* Social Icons */
+#social_side_links {
+    position: fixed;
+    top: 16rem;
+    right: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 10
+}
+
+#social_side_links li a {
+    background-color: #3c5a96;
+    display: inline-block;
+    -webkit-transition:  width .5s ease-in-out;
+    -moz-transition:  width .5s ease-in-out;
+    -o-transition:  width .5s ease-in-out;
+}
+
+
+#social_side_links li a:after  {
+    transition: .5s;
+    content: "";
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 0px;
+    color:white;
+}
+
+@media (min-width:960px) {
+    #social_side_links li a:hover::after  {
+        padding: 10px;
+        content: "like us on facebook";
+        text-transform: uppercase;
+    }
+
+}
+#social_side_links li a img {
+    display: inline-block;
+    width:40px;
+    padding: 10px;
+}
+
+
+
+#social_side_links li a:hover img {
+    background: rgba(0, 0, 0, .2);
+}
+
+

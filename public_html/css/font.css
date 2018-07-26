@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "DomaineDispNar-BoldItalic";
+  src: url("../fonts/DomaineDispNar-BoldItalic.otf") format("opentype");
+}
+
+
+@font-face {
+  font-family: "novecentowide-light";  
+  src: url("../fonts/novecentowide-light-webfont.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: "novecentowide-normal";  
+  src: url("../fonts/novecentowide-normal-webfont.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: "novecentowide-medium";  
+  src: url("../fonts/novecentowide-medium-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "novecentowide-demibold";  
+  src: url("../fonts/novecentowide-demibold-webfont.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: "lato-bol-webfont";  
+  src: url("../fonts/lato-bol-webfont.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: "lato-regita-webfont";  
+  src: url("../fonts/lato-regita-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: "lato-reg-webfont";  
+  src: url("../fonts/lato-reg-webfont.woff") format("woff");
+}
+
+
+@font-face {
+  font-family: "geomanist-medium";  
+  src: url("../fonts/Geomanist-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "geomanist-bold";  
+  src: url("../fonts/Geomanist-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "circular-std-book";  
+  src: url("../fonts/CircularStd-Book.woff") format("woff");
+}
+
+@font-face {
+  font-family: "akazan_bold";
+  src: url("../fonts/akazan_bold-webfont.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "akazan_light";
+  src: url("../fonts/akazan_lt-webfont.woff2") format("woff2");
+}

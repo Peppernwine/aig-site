@@ -1,0 +1,8 @@
+# Disable directory browsing
+Options -Indexes
+
+# Deny access to filenames starting with *
+<FilesMatch "*">
+Order allow, deny
+Deny from all
+</FilesMatch>

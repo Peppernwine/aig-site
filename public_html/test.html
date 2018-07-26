@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="vendor/knockout/knockout-3.4.2.js"></script>
+</head>
+<body>
+
+
+<div id="liveExample" class="liveExample">
+    <p>
+        Choose a ticket class:
+        <select data-bind="options: tickets,
+                           optionsCaption: 'Choose...',
+                           optionsText: 'name',
+                           value: chosenTicket"></select>
+
+        <button data-bind="enable: chosenTicket,
+                           click: resetTicket" disabled="">Clear</button>
+    </p>
+    <p data-bind="with: chosenTicket"></p>
+
+</div>
+
+
+<script type="text/javascript">
+    function TicketsViewModel() {
+        this.tickets = [
+            { name: "Economy", price: 199.95 },
+            { name: "Business", price: 449.22 },
+            { name: "First Class", price: 1199.99 }
+        ];
+
+        this.chosenTicket = ko.observable();
+                this.resetTicket = function() { this.chosenTicket(null) }
+    }
+    d = new TicketsViewModel();
+    ko.applyBindings(d, document.getElementById("liveExample"));
+
+
+    for (let x = 0; x < 3 ; x++) {
+        if (d.tickets[x].name == "Business") {
+            d.chosenTicket(d.tickets[x]);
+            alert(x);
+            break;
+        }
+    }
+    alert(d.chosenTicket());
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+RewriteEngine On # Turn on the rewriting engine
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^shoppingbag/?$ %1/rest-api/orderbag.php [NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^shoppingbag/checkout$ %1/rest-api/orderbagcheckout.php [NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^shoppingbag/pay$ %1/rest-api/orderbagpay.php [NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^shoppingbag/(.+)?$ %1/rest-api/orderbagitem.php?uniqueId=$1 [NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^orders/(.*)?$ %1/rest-api/order.php?orderId=$1 [NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^orders(.*)$ %1/rest-api/order.php?$1 [QSA,NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^reservations/(.*)?$ %1/rest-api/reservation.php?reservationId=$1 [NC,L]
+
+RewriteCond %{THE_REQUEST} (?=/)(.*)(?=/rest-api) [NC]
+RewriteRule ^reservations(.*)$ %1/rest-api/reservation.php?$1 [QSA,NC,L]

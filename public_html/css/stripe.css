@@ -1,0 +1,10 @@
+.cc-field {
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px 12px;
+}
+
+.cc-error {
+    color:red;
+}

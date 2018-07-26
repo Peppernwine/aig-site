@@ -1,0 +1,48 @@
+.sec-page-header { 
+    background-image: url("../images/catering1-1200.jpg");
+}
+
+#contact-feedback form{
+    margin:auto auto;
+    width:90%;
+    padding:2rem;
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,0.2);
+}
+
+#comment{
+  height:10rem;
+}
+
+#lbl-privacy {
+    margin-right: 3%;
+}
+
+
+#contact-location {
+    width:100%;
+}
+
+#contact-location .sub-group{
+    width: 100%;
+    float:left;
+    margin:.5rem 1rem .5rem 0;
+    height:26rem;
+}
+
+#contact-address, #contact-map {
+    height:23rem;
+    padding:10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 8px 20px 0 rgba(0,0,0,0.2);
+}
+
+@media (min-width:768px)  {
+
+    #contact-location .sub-group{
+        width: 46%;
+    }
+
+    #contact-feedback form{
+        width:60%;
+    }
+}

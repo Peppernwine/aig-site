@@ -1,0 +1,346 @@
+.transparent-navbar{
+    background-color: rgba(0,0,0,0);
+    border-width: 0px;
+    border-radius: 0px;
+    margin-bottom: 0px
+}
+
+.navbar .navbar-nav li > a{
+    font-family:novecentowide-light;
+    font-size:1rem;
+    padding: .5rem .5rem .5rem .5rem;
+    color:#fff;
+    font-weight:700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: transparent;
+    transition: background-color 500ms ease-in-out;
+}
+
+.sticky .navbar .navbar-nav li>a{
+    color:#333;
+}
+
+.navbar .navbar-nav li>a{
+    border: 1px solid transparent;
+}
+
+
+.navbar .navbar-nav li>a:hover {
+    border: 1px solid #FDC224;
+    border-radius:20px;
+    background-color:transparent;
+    //background-color: rgba(255,255,255, .25);
+}
+
+
+.sticky .navbar .navbar-nav li>a:hover {
+    border: 1px solid #fff;
+}
+
+.sticky .navbar-toggle .icon-bar {
+    background-color: black;
+}
+
+.navbar-toggle .icon-bar{
+    background-color: white;
+}
+
+.navbar-collapse {
+    clear:left;
+    padding: 0px;
+}
+
+.navbar-toggle {
+    float:none;
+    //margin: .75rem 0 .75rem .5rem;
+    margin-left: 1rem;
+    padding:0px;
+    border: 0px;
+    color:white;
+    background: rgba(0,0,0,0);
+    vertical-align: middle;
+}
+
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
+
+.navbar-default .navbar-toggle {
+    border: none;
+}
+
+.navbar-toggle span.icon-bar {
+    transition: all 0.15s;
+}
+
+.navbar-toggle span:nth-child(2) {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+}
+
+.navbar-toggle span:nth-child(3) {
+    opacity: 0;
+}
+
+.navbar-toggle span:nth-child(4) {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+}
+
+.navbar-toggle.collapsed span:nth-child(2),
+.navbar-toggle.collapsed span:nth-child(4) {
+    transform: rotate(0);
+}
+
+.navbar-toggle.collapsed span:nth-child(3) {
+    opacity: 1;
+}
+
+.nav {
+    margin-top : 10px;
+    margin-bottom : 10px;
+}
+
+div.navbar-header {
+    width: 100%;
+    text-align: center;
+    margin: 0px;
+    display: block;
+    float:none;
+}
+
+.navbar-brand {
+    float:none;
+    margin:0px;
+    padding:0px;
+}
+
+.navbar-brand img {
+    max-width:175px;
+    min-width:150px;
+    height:auto;
+}
+
+.navbar-nav {
+    margin:0px;
+
+}
+
+.navbar-nav-primary {
+    text-align: center;
+    vertical-align: middle;
+    width:100%;
+    margin:auto;
+    padding: .5rem 0 .5rem 0;
+}
+
+.navbar-nav-secondary {
+    position:relative;
+    z-index:99;
+    margin:0 auto 0 auto;
+    text-align: center;
+}
+
+.navbar-nav-primary > li {
+    display:inline-block;
+    float: none;
+    margin-left: .25rem;
+    list-style: none;
+}
+
+.navbar-nav-secondary .navbar-nav {
+    float:none;
+    display: inline-block;
+}
+
+.navbar-nav-primary .secondary-link {
+    display: none;
+}
+
+.top-bar {
+    position:relative;
+    width:100%;
+    min-width:100%;
+    margin :0px 0px;
+    padding:7px 0px;
+    font: .75rem LatoRegular,Arial,Helvetica,sans-serif;
+    background-color: rgba(0,0,0,0);
+}
+
+.top-bar::after {
+    content : "";
+    clear:both;
+    display:table;
+}
+
+.top-bar-contact {
+    display : block;
+    padding: 0px;
+    margin: 0 auto;
+    line-height:normal;
+    list-style: none;
+    position:relative;
+    vertical-align:middle;
+    text-align: center;
+}
+
+
+.phone {
+    margin-left: 1px;
+}
+
+.top-bar-contact > li{
+    display: inline-block;
+    padding: 2px 8px 2px 8px;
+}
+
+.top-bar-contact > li a  {
+    color:#ffffff;
+    text-decoration-line: none;
+    text-transform: uppercase;
+}
+
+.top-bar-contact > li a:focus, .bar-contact > li a:hover {
+    color: #fff;
+    text-decoration: none;
+    cursor:pointer;
+    text-decoration-line: none;
+    -webkit-transition: all 0.5s ease-out; /* Saf3.2+, Chrome */
+    -moz-transition: all 0.5s ease-out; /* FF4+ */
+    -ms-transition: all 0.5s ease-out; /* IE10 */
+    -o-transition: all 0.5s ease-out; /* Opera 10.5+ */
+    transition: all 0.5s ease-out;
+}
+
+.online-order-overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0, 0.85); /* Black w/opacity */
+    overflow-x:hidden; /* Disable horizontal scroll */
+    transition: .5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.online-partners {
+    position: relative;
+    top: 20%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 2.5rem; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.online-order-overlay a {
+    padding: .75rem;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.online-order-overlay a:hover, .online-order-overlay a:focus {
+    color: #f1f1f1;
+}
+
+
+/* Position the close button (top right corner) */
+.online-order-overlay .closebtn {
+    position: absolute;
+    top: 1rem;
+    right: 4rem;
+    width:2rem;
+    height:2rem;
+    font-size: 4rem;
+}
+
+
+.section-subheader {
+    font-family:novecentowide-demibold;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    font-size:1.5rem;
+    color:#b70038;
+}
+
+.navbar-nav .open .primary-dropdown-menu {
+    background: rgba(0, 0,0,.75);
+}
+
+.sticky .navbar-nav .open .primary-dropdown-menu {
+    background-color:rgba(253,194,36,.9);
+    background-color:rgba(239,141,36,.9);
+}
+
+.navbar-collapse.in {
+    background: rgba(0,0,0,.75);
+}
+
+/* When the height of the screen is less than 450 pixels, change the fonts-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .online-order-overlay a {font-size: 20px}
+    .online-order-overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+@media (min-width:300px) {
+
+    .navbar-brand img {
+        width:100%;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .navbar {
+        width:100%; /* 70px; */
+        margin:0px auto;
+        //background-color: rgba(0,0,0,.4);
+    }
+
+    .navbar-nav-secondary {
+        //background-color:rgba(0,0, 0,.4);
+    }
+
+    .sticky .navbar-nav-secondary {
+        background-color:rgba(253,194,36,.9);
+        background-color:rgba(239,141,36,.9);
+    }
+}
+
+
+@media (min-width:960px) {
+    .navbar .navbar-nav li > a {
+        padding: .5rem .5rem;
+    }
+}
+
+@media (min-width:768px) {
+
+    .navbar-nav-primary .secondary-link{
+        display: inline-block;
+    }
+
+    #navbar-nav-secondary {
+        display: none!important;
+        background:rgba(0, 0, 0,.4);
+    }
+
+    .navbar .navbar-nav li>a:hover:after {
+        background: #b70038;
+    }
+
+
+}
+

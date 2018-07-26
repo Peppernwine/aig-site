@@ -1,0 +1,154 @@
+.mb-wrap {
+    width:90%;
+    margin: 2rem .375rem;
+    padding: 2rem;
+    position: relative;
+    background: transparent;    
+    box-shadow:0 8px 20px 0 rgba(0,0,0,0.2);
+    border:1px solid #eee; 
+}
+
+.mb-wrap p{
+    margin: 0;
+    padding: 0;
+}
+
+.mb-wrap blockquote {
+    margin: 0;
+    padding: 0;
+    position: static; /* relative */
+}
+
+.mb-wrap cite {
+    font-style: normal;
+}
+
+.mb-style-6 {
+    height: auto;
+    width:49%;
+    float:left;
+    background: white;
+    border-radius: 4px;
+}
+
+
+/* Shadow style from Nicolas Gallagher: http://nicolasgallagher.com/css-drop-shadows-without-images/demo/ */
+/*
+.mb-style-6:before, .mb-style-6:after {
+    content: "";
+    position: absolute;
+    z-index: -5;
+    -moz-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    bottom: 15px;
+    box-shadow: 0 15px 10px rgba(121, 34, 44, 0.7);
+    height: 20%;
+    left: 1rem;
+    width: 50%;
+}
+.mb-style-6:after {
+    -moz-transform: rotate(3deg);
+    -webkit-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    /* transform: rotate(3deg); 
+    left: auto;
+    right: 1rem;    
+}
+
+*/
+
+.mb-style-6 blockquote{
+    background: white;
+    color:black;
+    height:auto;
+    padding: 0 1rem 0rem 1rem;
+    text-align: left;
+    font-style: italic;
+    overflow: auto;
+    vertical-align: middle;
+    display: table-cell;
+
+}
+
+.mb-style-6 blockquote:before{
+    color: darkorange;
+    position: absolute;
+    content: '\201C';
+    font-size: 8rem;
+    line-height: 10rem;
+    top: -.5rem;
+    left: 1.5rem;
+    margin-left:.5rem;
+    font-family: Georgia, serif;
+}
+
+.mb-style-6 blockquote p {
+    color:#333;
+    font-size: 1rem;
+    margin:auto auto;
+    padding-left: 2.5rem;
+    display: table-cell;
+}
+
+.mb-style-6 .mb-attribution {
+    bottom:3px;
+    padding: 1rem;
+}
+
+.mb-style-6 .mb-author {
+    font-size: 1rem;
+    -moz-transform: rotate(-4deg);
+    color: #070d5f;
+    color: #333;
+
+}
+.mb-style-6 cite a{
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1.25px;
+    font-size: .75rem;
+}
+.mb-style-6 cite a:hover{
+    color: #000;
+}
+
+blockquote {
+    border-left: 5px solid #b70038;
+}
+
+.star-rating {
+    text-align: center;
+}
+
+.star-rating  i{
+    font-size:1.5rem;
+    color:#f1a81c;
+    color:darkorange;
+}
+
+@media (min-width:300px) {
+    .mb-style-6 {
+        height: auto;
+        float:none;
+        width:100%;
+    }
+    
+}
+
+
+@media (min-width:960px) {
+    .mb-style-6 {
+        height: 18rem;
+        float:left;
+        width:48%;
+    }
+    .mb-style-6 .mb-attribution {
+        position:absolute;
+        bottom:3px;
+        padding: 1.5rem;
+    }
+}
