@@ -13,7 +13,8 @@ require_once RESOURCE_PATH."/SendSMS.class.php";
 require_once RESOURCE_PATH."/SendEmail.class.php";
 require_once RESOURCE_PATH."/OrderDAO.class.php";
 require_once RESOURCE_PATH."/OrderHeader.class.php";
-require_once RESOURCE_PATH . "/OrderView.class.php";
+require_once RESOURCE_PATH."/OrderView.class.php";
+require_once RESOURCE_PATH."/http-helper.php";
 
 class OrderViewController
 {

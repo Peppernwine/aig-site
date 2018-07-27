@@ -13,7 +13,8 @@ require_once RESOURCE_PATH."/SendSMS.class.php";
 require_once RESOURCE_PATH."/SendEmail.class.php";
 require_once RESOURCE_PATH."/ReservationDAO.class.php";
 require_once RESOURCE_PATH."/Reservation.class.php";
-require_once RESOURCE_PATH . "/ReservationView.class.php";
+require_once RESOURCE_PATH ."/ReservationView.class.php";
+require_once RESOURCE_PATH."/http-helper.php";
 
 class ReservationViewController
 {
