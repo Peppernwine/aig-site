@@ -14,7 +14,7 @@ $toNumber = '+12033006833';
 $sendSMS = new SendSMS();
 
 try {
-    $sendSMS->send($fromNumber,$toNumber,'Thanks for your order. Link to view your order-http://de47c7a1.ngrok.io/aig-customer-site/public_html/orderview?orderId=113');
+    $sendSMS->send($fromNumber,$toNumber,'Thanks for your order. Link to view your order-http://de47c7a1.ngrok.io/aig-customer-site/public/orderview?orderId=113');
 
     echo "SMS sent to $toNumber from $fromNumber";
 
