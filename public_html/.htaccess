@@ -5,10 +5,19 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} /$
 RewriteRule (.*)/ $1 [R=301]
 
-RewriteCond %{HTTP_HOST} localhost
+#http://localhost/aig-site/public_html/menu
+#RewriteCond %{HTTP_HOST} localhost
+#RewriteCond %{REQUEST_FILENAME}\.php -f
+#RewriteRule ^(.*)? $1.php [NC,L]
+
+#http://avonindiangrill.com/aig-site/public_html/menu
+#RewriteCond %{HTTP_HOST} !localhost
+RewriteCond %{THE_REQUEST} public_html
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)? $1.php [NC,L]
 
-RewriteCond %{HTTP_HOST} !localhost
+#http://avonindiangrill.com/menu
+#RewriteCond %{HTTP_HOST} !localhost
+RewriteCond %{THE_REQUEST} !public_html
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)? /$1.php [NC,L]
