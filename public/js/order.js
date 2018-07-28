@@ -884,23 +884,26 @@ function OrderViewModel(menu,checkoutDefaults) {
 
     this.showTipSelection = function (data, e) {
 
-        var contHeight = $('#tip-selection-container').height();
-        var contWidth = $('#tip-selection-container').width();
+        $('#tip-selection-dialog').css({left:'-400px',top:'-400px'});
 
-        //var height = $('#tip-selection-dialog').height();
-        //var width = $('#tip-selection-dialog').width();
-        //calculating offset for displaying popup message
-        //leftVal=e.clientX-(width/2)+"px";
-        //topVal=e.clientY-(height/2)+"px";
+        $('#tip-selection-container').show('fast',
+            function() {
 
-        var bottomVal = contHeight - e.clientY + "px";
-        var rightVal = contWidth - e.clientX + "px";
-        //show the popup message and hide with fading effect
+                var contHeight = $('#tip-selection-container').height();
+                var contWidth = $('#tip-selection-container').width();
 
-        $('#tip-selection-dialog').css({right:rightVal,bottom:bottomVal});
+                var height = $('#tip-selection-dialog').height();
+                var width = $('#tip-selection-dialog').width();
 
-        $('#tip-selection-container').show();
-        $('#txt-tip-amount').focus().select();
+                var leftVal = (contWidth - width)/2 + "px";
+                var topVal = (contHeight - height)/2 + "px";
+
+
+                $('#tip-selection-dialog').css({left:leftVal,top:topVal});
+                $('#txt-tip-amount').focus().select();
+            }
+        );
+
         self.orderCheckout.backupTips();
         //self.tipsCopy.amount(self.tips().amount());
   };
