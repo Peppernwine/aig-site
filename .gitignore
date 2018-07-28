@@ -3,5 +3,6 @@ vendor/
 templates_c/
 .idea/
 temp/
+log/
 *.env
 *.log
