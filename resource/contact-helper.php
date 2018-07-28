@@ -5,7 +5,7 @@
  * Date: 4/26/2018
  * Time: 1:21 AM
  */
-require_once realpath(dirname(__FILE__)) . "/../public_html/bootstrap.php";
+require_once realpath(dirname(__FILE__)) . "/../public/bootstrap.php";
 include_once "user-helper.php";
 include_once "form-validation-helper.php";
 include_once "SendEmail.class.php";

@@ -6,7 +6,7 @@
  * Time: 2:26 PM
  */
 
-require_once realpath(dirname(__FILE__)) . "/../public_html/bootstrap.php";
+require_once realpath(dirname(__FILE__)) . "/../public/bootstrap.php";
 
 class UserToken
 {
