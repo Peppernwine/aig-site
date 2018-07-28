@@ -12,12 +12,12 @@ RewriteRule (.*)/ $1 [R=301]
 
 #http://avonindiangrill.com/aig-site/public_html/menu
 #RewriteCond %{HTTP_HOST} !localhost
-RewriteCond %{THE_REQUEST} public_html
+RewriteCond %{THE_REQUEST} public
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)? $1.php [NC,L]
 
 #http://avonindiangrill.com/menu
 #RewriteCond %{HTTP_HOST} !localhost
-RewriteCond %{THE_REQUEST} !public_html
+RewriteCond %{THE_REQUEST} !public
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.*)? /$1.php [NC,L]
