@@ -31,4 +31,13 @@ class StripePayment
 
     }
 
+    public function refund($chargeId) {
+        Stripe::setApiKey(STRIPE_API_SECRET);
+
+        $refund = \Stripe\Refund::create([
+            'charge' => $chargeId,
+        ]);
+
+        return $refund;
+    }
 }

@@ -13,15 +13,23 @@ require_once RESOURCE_PATH . "/alertmessage.php";
 if (isset($_POST['stripeToken'])) {
     $sp = new StripePayment();
 
-    $response = '';
-    $sp->charge($_POST['stripeToken'],999,'usd',
-         'Avon Indian Grill Charge','Avon Indian Grill','order_id','1001',$response);
+    $chargeResponse = $sp->charge($_POST['stripeToken'],999,'usd',
+             'Avon Indian Grill Charge','Avon Indian Grill',
+                'order_id','1001');
 
-    echo $response;
+
+    echo '<br>' . "<b>CHARGE:</b>" . '<br>';
+    echo 'Charge ID:' . $chargeResponse->id . '<br>';
+    echo 'Charge Object:' . $chargeResponse;
+
+    $refundResponse = $sp->refund($chargeResponse->id);
+    echo '<br>' . "<b>REFUND:</b>" . '<br>';
+    echo 'Refund Id' . $refundResponse->id;
+    echo 'Refund Object' . $refundResponse;
 }
 
 
-?>,
+?>
 <!doctype html>
 <html>
     <head>
@@ -50,6 +58,7 @@ if (isset($_POST['stripeToken'])) {
                             <div class="form-group">
                                 <label for="name-on-card">Name on Card</label>
                                 <input type="text" data-value-missing=”xxxx” required autocomplete="name"
+                                       value="John Doe"
                                        class="form-control" id="name-on-card" name="name-on-card" aria-describedby="name-on-cardHelp">
                             </div>
                         </div>
@@ -57,6 +66,7 @@ if (isset($_POST['stripeToken'])) {
                             <div class="form-group">
                                 <label for="street">Street</label>
                                 <input type="text" required autocomplete="address-line1"
+                                       value="221B Baker Street"
                                        class="form-control" id="street" name="street" aria-describedby="streetHelp">
                             </div>
                         </div>
@@ -64,6 +74,7 @@ if (isset($_POST['stripeToken'])) {
                             <div class="form-group">
                                 <label for="zipcode">Zip Code</label>
                                 <input type="text" required autocomplete="postal-code"
+                                       value="08452"
                                        class="form-control" id="zipcode" name="zipcode" aria-describedby="zipcodeHelp">
                             </div>
                         </div>
@@ -97,7 +108,7 @@ if (isset($_POST['stripeToken'])) {
 
                 </section>
 
-                <input id="btn-pay" type="submit" value="Pay"/>
+                <input id="btn-pay" type="submit" value="Pay & Refund"/>
 
             </form>
 
@@ -150,7 +161,7 @@ if (isset($_POST['stripeToken'])) {
                             message: '<p><i class="fa fa-spin fa-spinner"></i>Placing Order</p>'
                         });
                         popup.init(function(){
-                            popup.find('.bootbox-body').html('<p><i class="fa fa-spin fa-spinner"></i> Charging Credit card & sending order to Restaurant</p>');
+                            popup.find('.bootbox-body').html('<p><i class="fa fa-spin fa-spinner"></i> Testing - Charge & Refund Credit card </p>');
                             sp.processPayment(responseHandler,{dialog:popup});
                         });
                     });
