@@ -166,7 +166,7 @@ if (isset($_POST['stripeToken'])) {
                         });
                     });
 
-
+                    
                     function responseHandler(response,params) {
 
                         if (!response.success) {
