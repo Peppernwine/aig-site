@@ -18,6 +18,7 @@ sudo service apache2 restart
 sudo apt-get install php5.6-curl
 sudo php composer.phar update
 
+sudo apt-get install zip unzip php5.6-zip
 
 #enable mode rewrite..
 sudo a2enmod rewrite
