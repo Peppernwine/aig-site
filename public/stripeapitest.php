@@ -166,7 +166,7 @@ if (isset($_POST['stripeToken'])) {
                         });
                     });
 
-                    
+
                     function responseHandler(response,params) {
 
                         if (!response.success) {
@@ -177,7 +177,7 @@ if (isset($_POST['stripeToken'])) {
                             var errorContent = "<div style='margin:10px' class='alert alert-danger' role='alert'> " +
                                                "<span class='glyphicon glyphicon-exclamation-sign'></span> " + msg
                                                "</div>";
-
+/* TEST */
                             bootbox.alert(errorContent);
                             return;
                         }
