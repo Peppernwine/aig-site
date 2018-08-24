@@ -15,44 +15,54 @@ var composer = require('gulp-composer');
 var checkFilesExist = require('check-files-exist');
 var bSync = require('browser-sync').create(); // create a browser sync instance.
 
-
 var path = require('path');
-
 
 var paths = {};
 
-paths.libJSfiles = ['./node_modules/**/jquery.min.js','./node_modules/**/jquery.datetimepicker.full.min.js',
-                    './node_modules/**/jquery.blast.min.js','./node_modules/**/bootbox.min.js',
-                    './node_modules/**/bootstrap.min.js','./node_modules/**/velocity.min.js',
-                    './node_modules/**/flickity.pkgd.min.js',
-                    './bower_components/**/knockout.js','./bower_components/**/knockout.mapping-latest.js'];
+paths.NPMlibJSfiles = ['./node_modules/**/jquery.min.js','./node_modules/**/jquery.datetimepicker.full.min.js',
+    './node_modules/**/jquery.blast.min.js','./node_modules/**/bootbox.min.js',
+    './node_modules/**/bootstrap.min.js','./node_modules/**/velocity.min.js',
+    './node_modules/**/flickity.pkgd.min.js',
+    './bower_components/**/knockout.js','./bower_components/**/knockout.mapping-latest.js'];
 
-paths.libCSSfiles = ['./node_modules/**/bootstrap.min.css','./node_modules/**/flickity.min.css',
-                     './node_modules/**/jquery.datetimepicker.min.css'];
+paths.NPMlibCSSfiles = ['./node_modules/**/bootstrap.min.css','./node_modules/**/flickity.min.css',
+    './node_modules/**/jquery.datetimepicker.min.css'];
 
-paths.libFontAwesomeSCSSfiles = ['./node_modules/**/fontawesome-free/scss/*.*'];
-paths.libFontAwesomeFontfiles = ['./node_modules/**/fontawesome-free/webfonts/*.*'];
-
-paths.stylesScriptsRefFiles = ['./public/index.php'];
-paths.nonPublicFiles = ['./resource/**/*.*','./templates/**/*.*','./vendor/**/*.*'];
+paths.NPMLibSCSSFiles = ['./node_modules/**/fontawesome-free/scss/*.*'];
+paths.NPMLibFontFiles = ['./node_modules/**/fontawesome-free/webfonts/*.*'];
 
 paths.sharedVendorFiles = ['./lib-shared/**/*.*'];
 
-paths.buildDir = '/dev/build/php-gulp';
-paths.devTestDir = '/wamp64/www/test/php-gulp';
+paths.libSCSSFiles    = ['./public/scss/fontawesome.scss'];
 
-paths.stylesSourceDir = ['./public/css/*.*','./public/lib/css/*.*'];
-paths.scriptsSourceDir = ['./public/js/*.*','./public/lib/js/*.*'];
+paths.nonPublicFiles     = ['./app/**/*.*','./.htaccess','./app/**/.htaccess'];
+paths.publicHTMLFiles    = ['./public/**/*.php','./public/**/*.html','./public/**/.htaccess'];
+paths.publicImageFiles   = ['./public/**/images/*.*','./public/**/images/.htaccess'];
+paths.publicFontFiles    = ['./public/**/fonts/*.*','./public/**/fonts/.htaccess'];
 
-function copyPublicSource(targetDir) {
-    var src =  ['./public/**/*.html','./public/**/*.php','!./public/lib/KoolPHPSuite/**/*.*'];
+paths.stylesScriptsRefFiles = ['./public/styles.php','./public/scripts.php'];
+paths.stylesSourceDir       = ['./public/scss/*.*','./public/css/*.*','./public/lib/css/*.*'];
+paths.scriptsSourceDir      = ['./public/js/*.*','./public/lib/js/*.*'];
+paths.SASSSource            = ['./public/scss/*.scss'];
+
+paths.explicitPublicLibDir = ['./public/lib/KoolPHPSuite/**/*.*'];
+
+paths.buildDir   = '/dev/build/aig-site';
+paths.devTestDir = '/wamp64/www/test/aig-site';
+
+function copyHtml(targetDir) {
+    var src = paths.publicHTMLFiles;// ['./public/**/.htaccess','./public/**/*.html','./public/**/*.php'];
 
     // Exclude php/html files that are referring to CSS and JS.. they will be copied in a separate task..
     var i;
     for (i = 0; i < paths.stylesScriptsRefFiles.length; i++) {
         src.push('!' + paths.stylesScriptsRefFiles[i]);
-    }
-    ;
+    };
+
+    for (i = 0; i < paths.explicitPublicLibDir.length; i++) {
+        src.push('!' + paths.explicitPublicLibDir[i]);
+    };
+
     return gulp.src(src,{base:'./'})
         .pipe(gulp.dest(targetDir));
 }
@@ -77,21 +87,30 @@ gulp.task('build:clean', function() {
 })
 
 
-// copy resource,templates,vendor to build
+gulp.task('build:copy-explicit-public-lib', function() {
+    return gulp.src(paths.explicitPublicLibDir,{base:'./'})
+        .pipe(gulp.dest(paths.buildDir));
+});
+
+
+// copy folders/files under app folder..eg. resource,templates,vendor to build
 gulp.task('build:copy-non-public', function() {
     return gulp.src(paths.nonPublicFiles,{base:'./'})
         .pipe(gulp.dest(paths.buildDir));
 });
 
-// copy public/fonts,public/images/,public/lib/fonts, public/lib/KoolPHPSuite
-gulp.task('build:copy-public-assets', function() {
-    return gulp.src(['./public/**/*.*','!./public/**/*.php','!./public/**/*.html',
-                    '!./public/**/css/*.*','!./public/**/js/*.*','!./public/**/scss/*.*'],{base:'./'})
-           .pipe(gulp.dest(paths.buildDir));
+gulp.task('build:copy-fonts', function() {
+    return gulp.src(paths.publicFontFiles,{base:'./'})
+        .pipe(gulp.dest(paths.buildDir));
 });
 
-gulp.task('build:copy-public-src',function() {
-    return copyPublicSource(paths.buildDir);
+gulp.task('build:copy-images', function() {
+    return gulp.src(paths.publicImageFiles,{base:'./'})
+        .pipe(gulp.dest(paths.buildDir));
+});
+
+gulp.task('build:copy-html',function() {
+    return copyHtml(paths.buildDir);
 });
 
 gulp.task('build:copy-styles-scripts',function() {
@@ -113,13 +132,91 @@ gulp.task('deploy-dev-test:copy-styles-scripts',function() {
     return retVal;
 });
 
-gulp.task('serve', function() {
+gulp.task('deploy-dev-test', function(callback) {
+    runSequence('build','deploy-dev-test:clean','deploy-dev-test:copy',
+        callback);
+});
+
+
+gulp.task('install-dev:copy-shared-lib', function() {
+    //copy to non public folder
+    gulp.src(paths.sharedVendorFiles)
+        .pipe(gulp.dest('./app/vendor'));
+
+    //copy to public folder
+    return gulp.src(paths.sharedVendorFiles)
+        .pipe(gulp.dest('./public/lib'));
+});
+
+gulp.task('install-dev:frontend', function() {
+    return gulp.src(['./bower.json', './package.json'])
+        .pipe(install());
+});
+
+gulp.task('install-dev:backend', function(done) {
+    checkFilesExist('composer.json').then(function(){composer({ async: false })});
+    done();
+});
+
+gulp.task('install-dev:copy-lib-js', function() {
+    return gulp.src(paths.NPMlibJSfiles)
+        .pipe(flatten())
+        .pipe(gulp.dest('./public/lib/js'));
+});
+
+gulp.task('install-dev:copy-lib-css', function() {
+    return gulp.src(paths.NPMlibCSSfiles)
+        .pipe(flatten())
+        .pipe(gulp.dest('./public/lib/css'));
+});
+
+gulp.task('install-dev:copy-lib-scss', function() {
+    return gulp.src(paths.NPMLibSCSSFiles)
+        .pipe(flatten())
+        .pipe(gulp.dest('./public/lib/scss'));
+});
+
+gulp.task('install-dev:copy-lib-fonts', function() {
+    return gulp.src(paths.NPMLibFontFiles)
+        .pipe(flatten())
+        .pipe(gulp.dest('./public/lib/fonts'));
+});
+
+gulp.task('install-dev:compile-sass',function () {
+    return gulp.src(paths.libSCSSFiles)
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./public/lib/css'));
+});
+
+gulp.task('install-dev:clean', function() {
+    return del.sync(['./public/lib/','./app/vendor/']);
+})
+
+gulp.task('install-dev', function(callback) {
+    runSequence('install-dev:clean',
+        ['install-dev:frontend','install-dev:backend'],
+        ['install-dev:copy-shared-lib','install-dev:copy-lib-js','install-dev:copy-lib-css',
+            'install-dev:copy-lib-scss','install-dev:copy-lib-fonts'],
+        'install-dev:compile-sass',
+        callback);
+});
+
+gulp.task('build', function(callback) {
+    runSequence('install-dev:compile-sass','build:clean',['build:copy-non-public','build:copy-explicit-public-lib','build:copy-html','build:copy-styles-scripts','build:copy-images','build:copy-fonts'],
+        callback);
+});
+
+gulp.task('serve', function(callback) {
+    runSequence(['install-dev:compile-sass','deploy-dev-test:copy-styles-scripts'],callback);
     bSync.init({
-        proxy : "http://test.localhost/php-gulp/public"
+        proxy : "http://test.localhost/catering-quote/public"
     });
 });
 
-gulp.task('deploy-dev-test:watch', ['serve'],function() {
+gulp.task('watch',['serve'],function() {
+
+    gulp.watch(paths.SASSSource,['install-dev:compile-sass']);
+
     var stylesAndScriptSrc =  [];
 
     var i;
@@ -137,16 +234,12 @@ gulp.task('deploy-dev-test:watch', ['serve'],function() {
 
     gulp.watch(stylesAndScriptSrc,['deploy-dev-test:copy-styles-scripts']);
 
-    var otherSrc =  ['./public/**/*.html','./resource/**/*.html',
-                     './public/**/*.php','./resource/**/*.php',
-                     './templates/**/*.*',
-                     '!./**/lib/*.*'];
+    var otherSrc = ['./**/.htaccess','./public/**/*.*','./app/**/*.*','!./**/lib/*.*'];
 
     for (i = 0; i < stylesAndScriptSrc.length; i++) {
         otherSrc.push('!' + stylesAndScriptSrc[i]);
     }
 
-    console.log(otherSrc);
     return gulp.watch(otherSrc, function(obj){
         console.log('CHANGED');
         if( obj.type === 'changed' || obj.type === 'added') {
@@ -159,79 +252,4 @@ gulp.task('deploy-dev-test:watch', ['serve'],function() {
     });
 });
 
-gulp.task('deploy-dev-test', function(callback) {
-    runSequence('deploy-dev-test:clean','deploy-dev-test:copy',
-        callback);
-});
-
-gulp.task('install-dev:copy-shared-lib', function() {
-    //copy to non public folder
-    gulp.src(paths.sharedVendorFiles)
-        .pipe(gulp.dest('./vendor'));
-
-    //copy to public folder
-    return gulp.src(paths.sharedVendorFiles)
-        .pipe(gulp.dest('./public/lib'));
-});
-
-gulp.task('install-dev:frontend', function() {
-    return gulp.src(['./bower.json', './package.json'])
-        .pipe(install());
-});
-
-gulp.task('install-dev:backend', function(done) {
-    checkFilesExist('composer.json').then(function(){composer()});
-    done();
-});
-
-gulp.task('install-dev:copy-lib-js', function() {
-    return gulp.src(paths.libJSfiles)
-        .pipe(flatten())
-        .pipe(gulp.dest('./public/lib/js'));
-});
-
-gulp.task('install-dev:copy-lib-css', function() {
-    return gulp.src(paths.libCSSfiles)
-        .pipe(flatten())
-        .pipe(gulp.dest('./public/lib/css'));
-});
-
-gulp.task('install-dev:copy-fa-scss', function() {
-    return gulp.src(paths.libFontAwesomeSCSSfiles)
-        .pipe(flatten())
-        .pipe(gulp.dest('./public/lib/scss'));
-});
-
-gulp.task('install-dev:copy-fa-font', function() {
-    return gulp.src(paths.libFontAwesomeFontfiles)
-        .pipe(flatten())
-        .pipe(gulp.dest('./public/lib/fonts'));
-});
-
-gulp.task('install-dev:fa-sass',function () {
-    return gulp.src('./public/scss/fontawesome.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(rename('fontawesome.min.css'))
-        .pipe(gulp.dest('./public/lib/css'));
-});
-
-gulp.task('install-dev:clean', function() {
-    return del.sync('./public/lib/');
-})
-
-gulp.task('install-dev', function(callback) {
-    runSequence('install-dev:clean',
-                ['install-dev:frontend','install-dev:backend'],
-                ['install-dev:copy-shared-lib','install-dev:copy-lib-js',
-                 'install-dev:copy-lib-css','install-dev:copy-fa-scss','install-dev:copy-fa-font'],
-                'install-dev:fa-sass',
-                callback);
-});
-
-gulp.task('build', function(callback) {
-    runSequence('build:clean',['build:copy-non-public','build:copy-public-assets','build:copy-styles-scripts','build:copy-public-src'],
-        callback);
-});
-
-
-
+gulp.task('default',['watch']) ;

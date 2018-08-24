@@ -6,3 +6,5 @@ temp/
 log/
 *.env
 *.log
+bower_components/
+node_modules/

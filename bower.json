@@ -1,0 +1,21 @@
+{
+  "name": "aig-site",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "peppernwine <corporate@peppernwine.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Peppernwine/aig-site",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "knockout": "3.4.2",
+    "knockout-mapping": "^2.4.1"
+  }
+}

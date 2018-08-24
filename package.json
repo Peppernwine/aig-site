@@ -1,0 +1,45 @@
+{
+  "name": "aig-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peppernwine/aig-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peppernwine/aig-site/issues"
+  },
+  "homepage": "https://github.com/Peppernwine/aig-site#readme",
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.2.0",
+    "blast-text": "^2.0.0",
+    "bootbox": "^4.4.0",
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.24.6",
+    "check-files-exist": "^1.0.1",
+    "del": "^3.0.0",
+    "flickity": "^2.1.1",
+    "gulp": "^3.9.1",
+    "gulp-composer": "^0.4.5",
+    "gulp-debug": "^4.0.0",
+    "gulp-flatten": "^0.4.0",
+    "gulp-if": "^2.0.2",
+    "gulp-install": "^1.1.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-tap": "^1.0.1",
+    "gulp-uglify": "^3.0.1",
+    "gulp-useref": "^3.1.5",
+    "jquery": "^3.3.1",
+    "jquery-datetimepicker": "^2.5.20",
+    "run-sequence": "^2.2.1",
+    "velocity-animate": "^2.0.2"
+  }
+}
