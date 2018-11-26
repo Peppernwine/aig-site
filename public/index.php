@@ -2,7 +2,6 @@
     require_once "bootstrap.php";
 ?>
 <?php
-    $stylesheets = ['css/home.css?v75','css/flickity.css','css/testimonial.css?v6','css/socialmedia-buttons.css?v6'];
     $title = "Home";
     require_once "header-html.php";
 ?>

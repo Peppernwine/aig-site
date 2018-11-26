@@ -8,7 +8,7 @@
 
 include_once "path.php";
 include_once VENDOR_LIB_PATH . "/autoload.php";
-include_once RESOURCE_PATH . "/appconfig.php";
+include_once CONFIG_PATH . "/appconfig.php";
 include_once RESOURCE_PATH . "/AIGLogger.class.php";
 include_once RESOURCE_PATH . "/ErrorHandler.class.php";
 include_once RESOURCE_PATH . "/configuration.class.php";

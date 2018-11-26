@@ -1,5 +1,4 @@
 <?php
-    $stylesheets = ['css/home.css?v34','css/form-container.css?v3'];
     $title = "Edit Profile";
     $security = ['minUserType' => 1 ];
     require_once "bootstrap.php";

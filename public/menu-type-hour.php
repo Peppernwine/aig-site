@@ -1,5 +1,4 @@
 <?php
-    $stylesheets = ['css/home.css?v35','css/form-container.css'];
     $title = "Menu Type Hours";
     $security = ['minUserType' => 4 ];
     require_once "bootstrap.php";

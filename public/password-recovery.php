@@ -22,7 +22,6 @@ if (isPost('btn-recover-password')) {
 ?>
 
 <?php
-    $stylesheets = ['css/home.css?v35','css/form-container.css'];
     $title = "Password Recovery";
     require_once "header-html.php";
 ?>

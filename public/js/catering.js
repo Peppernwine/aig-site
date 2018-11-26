@@ -16,7 +16,6 @@ function CateringMenuCategory(data) {
     this.items(mappedItems);
 }
 
-
 function CateringPackageCategory(data) {
     var self = this;
     this.categoryCode = ko.observable(data.categoryCode)  ;
@@ -334,13 +333,5 @@ function CateringViewModel() {
 */
     }
 }
-
-$(function() {
-    var cvm = new CateringViewModel();
-    cvm.load();
-    ko.applyBindings(cvm);
-
-});
-
 
 

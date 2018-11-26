@@ -22,7 +22,6 @@ if (isPost('btn-change-password')) {
 ?>
 
 <?php
-$stylesheets = ['css/home.css?v35','css/form-container.css'];
 $title = "Reset Password";
 require_once "header-html.php";
 ?>

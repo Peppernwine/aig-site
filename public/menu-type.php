@@ -1,6 +1,5 @@
 
 <?php
-$stylesheets = ['css/home.css?v35','css/form-container.css?v3'];
 
 $title = "Menu Type";
 $security = ['minUserType' => 4 ];

@@ -16,41 +16,7 @@ if (isSignedIn()) {
         <title><?php echo isset($title) ?  "$title-" : "" ; ?>Avon Indian Grill</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat|Old+Standard+TT:700|Open+Sans|Passion+One|Philosopher:700|Volkhov" rel="stylesheet">
-
-        <?php echo Configuration::instance()->getInternalVendorCSSTag("vendor/bootstrap/css/bootstrap.min.css?v2")?>
-        <?php echo Configuration::instance()->getInternalVendorCSSTag("vendor/font-awesome/css/fontawesome-all.css")?>
-        <?php echo Configuration::instance()->getInternalVendorCSSTag("vendor/flickity/flickity.css")?>
-        <?php echo Configuration::instance()->getInternalVendorCSSTag("vendor/datetimepicker/jquery.datetimepicker.min.css?v2")?>
-
-        <?php echo Configuration::instance()->getInternalCSSTag("css/font.css?v14")?>
-        <?php echo Configuration::instance()->getInternalCSSTag("css/base.css?v207")?>
-        <?php echo Configuration::instance()->getInternalCSSTag("css/header.css?v92")?>
-        <?php echo Configuration::instance()->getInternalCSSTag("css/style.css?v26")?>
-        <?php echo Configuration::instance()->getInternalCSSTag("css/footer.css?v33")?>
-
-        <?php
-            if (isset($stylesheets)) {
-                foreach ($stylesheets as $stylesheet) {
-                    echo "<link rel='stylesheet' href='$stylesheet'/>";
-                }
-            }
-        ?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/jquery/jquery-3.3.1.min.js")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/blast/jquery.blast.min.js?v2")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/blast/velocity.min.js?v2")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/knockout/knockout-3.4.2.js")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/knockout/knockout.mapping.js?v4")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/bootstrap/js/bootstrap.min.js")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/bootbox/bootbox.min.js")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/flickity/flickity.pkgd.min.js")?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("vendor/datetimepicker/jquery.datetimepicker.full.min.js?v2")?>
-        <?php echo Configuration::instance()->getInternalJSTag("js/main.js?v41")?>
-        <?php echo Configuration::instance()->getInternalJSTag("js/referencedata.js")?>
-
+        <?php require_once "styles.php"?>
     </head>
 
     <body>

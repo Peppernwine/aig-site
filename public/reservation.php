@@ -1,5 +1,4 @@
 <?php
-    $stylesheets = ['css/home.css?v34','css/form-container.css'];
     $title = "Reservation";
     require_once "path.php";
 ?>

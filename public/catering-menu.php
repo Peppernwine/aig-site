@@ -1,6 +1,4 @@
-
 <?php
-$stylesheets = ['css/catering.css?v1'];
 $title = "Catering Menu";
 require_once "header-html.php";
 ?>
@@ -22,8 +20,6 @@ require_once "header-html.php";
     <div class="sec-page-header-overlay">
 
     </div>
-
-    <?php echo Configuration::instance()->getInternalJSTag("js/catering.js?v28")?>
 
     <article class= "group form-section full-size">
 
@@ -90,5 +86,6 @@ require_once "header-html.php";
 
 
 <?php
+$scripts = ["catering.js.php"];
 require_once "footer-html.php";
 ?>

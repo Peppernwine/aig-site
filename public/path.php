@@ -7,10 +7,11 @@
  */
 
 DEFINE('BASE_PATH',realpath(dirname(__FILE__)));
-DEFINE('TEMPLATE_PATH',BASE_PATH . '/../templates');
+DEFINE('TEMPLATE_PATH',BASE_PATH . '/../app/templates');
 DEFINE('PUBLIC_TEMP_PATH',BASE_PATH . '/temp');
-DEFINE('VENDOR_LIB_PATH',BASE_PATH . '/../vendor');
-DEFINE('RESOURCE_PATH',BASE_PATH . '/../resource');
+DEFINE('VENDOR_LIB_PATH',BASE_PATH . '/../app/vendor');
+DEFINE('RESOURCE_PATH',BASE_PATH . '/../app/resource');
+DEFINE('CONFIG_PATH',BASE_PATH . '/../app/config');
 DEFINE('LOG_PATH',BASE_PATH . '/../logs');
 DEFINE('KOOL_CONTROLS_PATH',VENDOR_LIB_PATH . '/KoolPHPSuite/KoolControls');
 DEFINE('R_KOOL_CONTROLS_PATH','vendor/KoolPHPSuite/KoolControls');

@@ -1,5 +1,5 @@
 <?php
- require_once "bootstrap.php";
+require_once "bootstrap.php";
 require_once RESOURCE_PATH . "/configuration.class.php";
 require_once RESOURCE_PATH . "/database.php";
 require_once RESOURCE_PATH . "/http-helper.php";
@@ -32,7 +32,6 @@ elseif (isPost('btn-submit-comment')) {
 ?>
 
 <?php
-    $stylesheets = ['css/contact.css?v19'];
     $title = "Contact Us";
     require_once "header-html.php";
 

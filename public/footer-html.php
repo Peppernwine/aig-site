@@ -74,9 +74,16 @@
        TOP
     </button>
 -->
+<?php
+    if (!empty($scripts))
+        array_unshift($scripts, "scripts.php");
+    else
+        $scripts = ["scripts.php"];
+    foreach ($scripts as $script) {
+        require_once $script;
+    }
+?>
 
-<script type="text/javascript" src="js/stickyheader.js?v14"> </script>
-    <script type="text/javascript" src="js/eventbus.js"> </script>
 </body>
 </html>
 

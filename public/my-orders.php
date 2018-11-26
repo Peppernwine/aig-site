@@ -5,7 +5,6 @@
  * Date: 4/20/2018
  * Time: 9:54 AM
  */
-    $stylesheets = ['css/home.css?v34','css/form-container.css?v3'];
     $title = "My Orders";
     $security = ['minUserType' => 1 ];
     require_once "bootstrap.php";
@@ -30,8 +29,6 @@ include_once RESOURCE_PATH . "/alertmessage.php";
     <?php
         require_once "popup-header.html.php";
     ?>
-
-    <?php echo Configuration::instance()->getInternalJSTag("js/orderview.js?v25")?>
 
     <article class= "group form-section full-size">
         <h2 class="header-underline group-title">My Orders</h2>
@@ -90,5 +87,6 @@ include_once RESOURCE_PATH . "/alertmessage.php";
 </div>
 
 <?php
+$scripts = ["orderview.js.php"];
 require_once "footer-html.php";
 ?>

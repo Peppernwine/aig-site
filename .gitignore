@@ -6,5 +6,6 @@ temp/
 log/
 *.env
 *.log
+lib/
 bower_components/
 node_modules/

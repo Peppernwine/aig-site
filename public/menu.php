@@ -4,14 +4,9 @@
 ?>
 
 <?php
-    $stylesheets = ['css/menu.css?v134','css/stripe.css?v2'];
     $title = "Menu";
     require_once "header-html.php";
 ?>
-        <?php echo Configuration::instance()->getInternalVendorJSTag("https://js.stripe.com/v3")?>
-        <?php echo Configuration::instance()->getInternalJSTag("js/stripe.js.php?v13")?>
-        <?php echo Configuration::instance()->getInternalJSTag("js/menu.js?v114")?>
-        <?php echo Configuration::instance()->getInternalJSTag("js/order.js?v189")?>
 
         <section class="container">
 
@@ -457,41 +452,10 @@
         <!-- /ko -->
     </section><!--/.container -->
 
-<script type="application/javascript">
-    ko.components.register('bag-summary', {
-        template:
-        '<div class="charges"> ' +
-        ' <div class="tbl-order-totals" > ' +
-        ' <div> ' +
-        ' <div class="charge-summary-label">Subtotal</div> ' +
-        ' <div class="charge-summary-value" data-bind="text:orderVM.orderCheckout.getDisplaySubTotal" >$1000.00</div> ' +
-        ' </div> ' +
-
-        ' <div> ' +
-        ' <div class="charge-summary-label">Sales Tax(6.35%)</div> ' +
-        ' <div class="charge-summary-value"  data-bind="text:orderVM.orderCheckout.salesTax().getDisplayAmount">$62.50</div> ' +
-        ' </div> ' +
-
-        ' <div> ' +
-        ' <div class="charge-summary-label">Tips <i data-bind="visible:orderVM.orderCheckout.tips().amount() > 0, click: orderVM.showTipSelection" style="padding-left:4px;padding-bottom:4px;color:rgba(183,0,56)"class="click-icon fas fa-pencil-alt"></i></div> ' +
-        ' <button data-bind="click: orderVM.showTipSelection,visible:orderVM.orderCheckout.tips().amount() === 0" type="button" class="btn btn-big btn-primary charge-summary-value" >Add Tip </button>' +
-        ' <div class="charge-summary-value" data-bind="text:orderVM.orderCheckout.tips().getDisplayAmount,visible:orderVM.orderCheckout.tips().amount() > 0" >$99.50</div> ' +
-        ' </div> ' +
-        ' <div> ' +
-        ' <div class="charge-summary-label">Total</div> ' +
-        ' <div class="charge-summary-value" data-bind="text:orderVM.orderCheckout.getDisplayTotal" style="font-weight:800;padding:2px 5px;display: inline-block;width:5rem;margin-left:5%;margin-top:5px;border-top:1px solid #333;border-bottom:1px solid #333;text-align:right">$162.50</div> ' +
-        ' </div> ' +
-        ' </div> ' +
-        ' </div> '
-    });
-
-    $(function() {
-
-    })
-</script>
 
 
 <?php
-require_once "footer-html.php";
+    $scripts = ["menu.js.php"];
+    require_once "footer-html.php";
 ?>
 

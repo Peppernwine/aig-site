@@ -29,7 +29,6 @@ if (isPost('btn-signin')) {
 ?>
 
 <?php
-$stylesheets = ['css/home.css?v37','css/form-container.css?v4'];
 $title = "Sign in";
 require_once "header-html.php";
 ?>

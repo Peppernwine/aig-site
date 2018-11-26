@@ -1,6 +1,5 @@
 
 <?php
-    $stylesheets = ['css/home.css?v35','css/form-container.css?v3'];
     $title = "Menu Item Profile";
     $security = ['minUserType' => 4 ];
     require_once "bootstrap.php";

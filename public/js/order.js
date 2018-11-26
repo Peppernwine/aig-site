@@ -485,7 +485,7 @@ function OrderCheckoutViewModel(orderVM,checkoutDefaults) {
         };
 
         self.stripePayment = new StripePayment({
-            fonts: [{cssSrc: "css/font.css"}],
+            fonts: [{cssSrc: "css/styles.min.css"}],
             elementStyles: elementStyles,
             elementClasses: elementClasses,
             ccSection: "#credit-card-section",

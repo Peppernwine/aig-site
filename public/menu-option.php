@@ -1,7 +1,4 @@
-<script src="vendor/jquery/jquery-3.3.1.min.js"></script>
-
 <?php
-    $stylesheets = ['css/home.css?v35','css/form-container.css'];
     $title = "Menu Option";
     $security = ['minUserType' => 4 ];
     require_once "bootstrap.php";

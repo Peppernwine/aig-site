@@ -45,10 +45,7 @@ switch ($type) {
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $messageType?></title>
-    <?php echo Configuration::instance()->getInternalCSSTag("css/font.css?v14")?>
-    <?php echo Configuration::instance()->getInternalCSSTag("css/base.css?v191")?>
-    <?php echo Configuration::instance()->getInternalCSSTag("css/style.css?v26")?>
-    <?php echo Configuration::instance()->getInternalVendorCSSTag("vendor/font-awesome/css/fontawesome-all.css")?>
+    <?php require_once "styles.php"?>
 </head>
 
 <body>
@@ -73,8 +70,4 @@ switch ($type) {
        </div>
     </section>
 </body>
-
-
-
-
 </html>

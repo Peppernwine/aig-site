@@ -68,7 +68,6 @@ if (isPost('btn-activate-account')) {
 
 
 <?php
-    $stylesheets = ['css/home.css?v35','css/form-container.css'];
     $title = "Activate Account";
     require_once "header-html.php";
 ?>

@@ -34,7 +34,6 @@
 ?>
 
 <?php
-    $stylesheets = ['css/home.css?v35','css/form-container.css?v4'];
     $title = "Sign up";
     require_once "header-html.php";
 ?>

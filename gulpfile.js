@@ -50,6 +50,36 @@ paths.explicitPublicLibDir = ['./public/lib/KoolPHPSuite/**/*.*'];
 paths.buildDir   = '/dev/build/aig-site';
 paths.devTestDir = '/wamp64/www/test/aig-site';
 
+
+
+function getStylesAndScriptSrc () {
+    var stylesAndScriptSrc =  [];
+
+    var i;
+    for (i = 0; i < paths.scriptsSourceDir.length; i++) {
+        stylesAndScriptSrc.push(paths.scriptsSourceDir[i]);
+    }
+
+    for (i = 0; i < paths.stylesSourceDir.length; i++) {
+        stylesAndScriptSrc.push(paths.stylesSourceDir[i]);
+    }
+
+    for (i = 0; i < paths.stylesScriptsRefFiles.length; i++) {
+        stylesAndScriptSrc.push(paths.stylesScriptsRefFiles[i]);
+    }
+    return stylesAndScriptSrc;
+}
+
+
+function getNOTStylesAndScriptSrc (src) {
+    var i;
+    var stylesAndScriptSrc = getStylesAndScriptSrc();
+    for (i = 0; i < stylesAndScriptSrc.length; i++) {
+        src.push('!' + stylesAndScriptSrc[i]);
+    }
+    return src;
+}
+
 function copyHtml(targetDir) {
     var src = paths.publicHTMLFiles;// ['./public/**/.htaccess','./public/**/*.html','./public/**/*.php'];
 
@@ -67,12 +97,17 @@ function copyHtml(targetDir) {
         .pipe(gulp.dest(targetDir));
 }
 
+
+
 function copyStylesAndScripts(targetDir) {
     return gulp.src(paths.stylesScriptsRefFiles,{base:'./'})
+        //.pipe(debug())
         .pipe(useref())
-        .pipe(debug())
-        .pipe(gulpIf("*.js", uglify()))
+        .pipe(gulpIf("*.js", uglify().on('error', function(e){
+            console.log(e);
+        })))
         .pipe(gulpIf("*.css", minifyCSS()))
+        .pipe(debug())
         .pipe(tap(function(file, t) {
             if (['.js', '.css'].indexOf( file.extname) >= 0) {
                 return t.through(gulp.dest, [targetDir +'/public/']);
@@ -99,6 +134,14 @@ gulp.task('build:copy-non-public', function() {
         .pipe(gulp.dest(paths.buildDir));
 });
 
+gulp.task('build:copy-html',function() {
+    return copyHtml(paths.buildDir);
+});
+
+gulp.task('build:copy-styles-scripts',function() {
+    return copyStylesAndScripts(paths.buildDir);
+});
+
 gulp.task('build:copy-fonts', function() {
     return gulp.src(paths.publicFontFiles,{base:'./'})
         .pipe(gulp.dest(paths.buildDir));
@@ -109,13 +152,6 @@ gulp.task('build:copy-images', function() {
         .pipe(gulp.dest(paths.buildDir));
 });
 
-gulp.task('build:copy-html',function() {
-    return copyHtml(paths.buildDir);
-});
-
-gulp.task('build:copy-styles-scripts',function() {
-    return copyStylesAndScripts(paths.buildDir);
-});
 
 gulp.task('deploy-dev-test:clean', function() {
     return del.sync(paths.devTestDir,{force:true});
@@ -125,6 +161,13 @@ gulp.task('deploy-dev-test:copy', function() {
     return gulp.src(paths.buildDir +'/**/*.*')
         .pipe(gulp.dest(paths.devTestDir));
 });
+
+gulp.task('deploy-dev-test:copyLiveHtml', function() {
+    var src = getNOTStylesAndScriptSrc(['./**/*.htaccess','./app/**/+(*.html|*.php)','./public/**/+(*.html|*.php)','!vendor/**/*.*','!lib/**/*.*']);
+    return gulp.src(src,{base:"./"})
+        .pipe(gulp.dest(paths.devTestDir));
+});
+
 
 gulp.task('deploy-dev-test:copy-styles-scripts',function() {
     var retVal = copyStylesAndScripts(paths.devTestDir);
@@ -140,11 +183,8 @@ gulp.task('deploy-dev-test', function(callback) {
 
 gulp.task('install-dev:copy-shared-lib', function() {
     //copy to non public folder
-    gulp.src(paths.sharedVendorFiles)
-        .pipe(gulp.dest('./app/vendor'));
-
-    //copy to public folder
     return gulp.src(paths.sharedVendorFiles)
+        .pipe(gulp.dest('./app/vendor'))
         .pipe(gulp.dest('./public/lib'));
 });
 
@@ -209,7 +249,7 @@ gulp.task('build', function(callback) {
 gulp.task('serve', function(callback) {
     runSequence(['install-dev:compile-sass','deploy-dev-test:copy-styles-scripts'],callback);
     bSync.init({
-        proxy : "http://test.localhost/catering-quote/public"
+        proxy : "http://test.localhost/aig-site/public"
     });
 });
 
@@ -217,28 +257,10 @@ gulp.task('watch',['serve'],function() {
 
     gulp.watch(paths.SASSSource,['install-dev:compile-sass']);
 
-    var stylesAndScriptSrc =  [];
+    gulp.watch(getStylesAndScriptSrc(),['deploy-dev-test:copy-styles-scripts']);
 
-    var i;
-    for (i = 0; i < paths.scriptsSourceDir.length; i++) {
-        stylesAndScriptSrc.push(paths.scriptsSourceDir[i]);
-    }
-
-    for (i = 0; i < paths.stylesSourceDir.length; i++) {
-        stylesAndScriptSrc.push(paths.stylesSourceDir[i]);
-    }
-
-    for (i = 0; i < paths.stylesScriptsRefFiles.length; i++) {
-        stylesAndScriptSrc.push(paths.stylesScriptsRefFiles[i]);
-    }
-
-    gulp.watch(stylesAndScriptSrc,['deploy-dev-test:copy-styles-scripts']);
-
-    var otherSrc = ['./**/.htaccess','./public/**/*.*','./app/**/*.*','!./**/lib/*.*'];
-
-    for (i = 0; i < stylesAndScriptSrc.length; i++) {
-        otherSrc.push('!' + stylesAndScriptSrc[i]);
-    }
+    //for watch to trigger adds... folders must be relative path.. cannot event begin with .(dot)
+    var otherSrc = getNOTStylesAndScriptSrc(['.htaccess','public/**/.htaccess','app/**/.htaccess','public/**/*.*','app/**/*.*','!./**/lib/*.*','!.git/**/*.*']);
 
     return gulp.watch(otherSrc, function(obj){
         console.log('CHANGED');
@@ -246,8 +268,8 @@ gulp.task('watch',['serve'],function() {
             console.log('CHANGED or ADDED:' + obj.path);
             gulp.src( obj.path, { "base": "./"})
                 .pipe(debug())
-                .pipe(gulp.dest(paths.devTestDir));
-            bSync.reload();
+                .pipe(gulp.dest(paths.devTestDir))
+                .on('end',bSync.reload);
         }
     });
 });

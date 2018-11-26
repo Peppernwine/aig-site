@@ -1,6 +1,4 @@
-
 <?php
-$stylesheets = ['css/home.css?v35','css/form-container.css'];
 $title = "Reserve Occasion";
 $security = ['minUserType' => 4 ];
 require_once "path.php";

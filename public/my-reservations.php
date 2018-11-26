@@ -5,7 +5,6 @@
  * Date: 4/20/2018
  * Time: 9:54 AM
  */
-$stylesheets = ['css/home.css?v34','css/form-container.css?v3'];
 $title = "My Orders";
 $security = ['minUserType' => 1 ];
 require_once "bootstrap.php";
@@ -30,7 +29,7 @@ require_once "header-html.php";
             require_once "popup-header.html.php";
         ?>
 
-        <script type="application/javascript" src="js/reservationview.js?v26"> </script>
+       <!-- <script type="application/javascript" src="js/reservationview.js?v26"> </script> -->
 
         <article class= "group form-section full-size">
             <h2 class="header-underline group-title">My Reservations</h2>
@@ -83,5 +82,6 @@ require_once "header-html.php";
     </div>
 
 <?php
+$scripts = ["reservation.js.php"];
 require_once "footer-html.php";
 ?>
