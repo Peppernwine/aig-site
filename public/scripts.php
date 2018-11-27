@@ -12,7 +12,7 @@
 
 <!-- build:js js/main.min.js -->
 <script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/stickyheader.js?v14"> </script>
+<script type="text/javascript" src="js/stickyheader.js"> </script>
 <script type="text/javascript" src="js/eventbus.js"> </script>
 <script type="text/javascript" src="js/referencedata.js"></script>
 <script type="text/javascript" src="js/menu.js"></script>

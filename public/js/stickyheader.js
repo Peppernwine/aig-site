@@ -63,8 +63,6 @@ function windowScroll() {
 
 };
 
-
-window.onscroll = function() {windowScroll()};
 // Get the header
 var header,navbarheader,topbar,sticky;
 
