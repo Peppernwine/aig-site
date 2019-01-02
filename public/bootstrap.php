@@ -21,4 +21,4 @@ include_once RESOURCE_PATH . "/info-page-helper.php";
 date_default_timezone_set('US/Eastern');
 ErrorHandler::instance()->initialize();
 
-ExceptionManager::setDefaultExceptionHandlers( [new LogExceptionHandler()]);
+//ExceptionManager::setDefaultExceptionHandlers( [new LogExceptionHandler()]);

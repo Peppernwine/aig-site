@@ -41,6 +41,7 @@ function getUserById($dbConnection, $userId) {
     $statement = $dbConnection->prepare($selectSQL);
     $statement->execute(array(':userId' => $userId));
     $row = $statement->fetch();
+
     if ($row === false) {
         throw new Exception("Invalid User ID");
     }

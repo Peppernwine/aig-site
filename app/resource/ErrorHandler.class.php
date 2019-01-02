@@ -36,7 +36,20 @@ class ErrorHandler
         echo json_encode($error);
     }
 
+    function displayError($errNo, $errStr, $errFile, $errLine,$errStack ) {
+
+        if (PHP_DISPLAY_ERRORS == 1) {
+            echo '<div class="alert alert-danger">';
+            echo '<b>Fatal error</b>: ' . $errStr;
+            if (!empty($stack))
+                echo 'Stack trace:<pre>' . $errStack . '</pre>';
+            echo ' thrown in <b>' . $errFile . '</b> on line <b>' . $errLine . '</b><br>';
+            echo '</div>';
+        }
+    }
+
     private function reportError($errNo, $errStr, $errFile, $errLine,$errStack ) {
+        $this->displayError($errNo, $errStr, $errFile, $errLine,$errStack );
         if (!empty($stack))
             $errData =  ['stacktrace' => $errStack,
                            'File' => $errFile,

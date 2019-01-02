@@ -265,7 +265,7 @@ gulp.task('watch',['serve'],function() {
     gulp.watch(getStylesAndScriptSrc(),['deploy-dev:copy-styles-scripts']);
 
     //for watch to trigger adds... folders must be relative path.. cannot event begin with .(dot)
-    var otherSrc = getNOTStylesAndScriptSrc(['.htaccess','public/**/.htaccess','app/**/.htaccess','public/**/*.*','app/**/*.*','!./**/lib/*.*','!.git/**/*.*']);
+    var otherSrc = getNOTStylesAndScriptSrc(['.htaccess','public/**/.htaccess','app/**/.htaccess','public/**/*.*','app/**/*.*','!app/vendor/**/*.*','!./**/lib/*.*','!.git/**/*.*']);
 
     return gulp.watch(otherSrc, function(obj){
         console.log('CHANGED');

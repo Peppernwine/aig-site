@@ -20,5 +20,6 @@
 <script type="text/javascript" src="js/order.js"></script>
 <script type="text/javascript" src="js/orderview.js"></script>
 <script type="text/javascript" src="js/reservationview.js"></script>
+<script type="text/javascript" src="js/referral.js"></script>
 <!-- endbuild -->
 <script type="text/javascript" src="js/stripe.js.php"></script>
