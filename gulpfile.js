@@ -11,6 +11,7 @@ var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var del = require('del');
+var rimraf = require("gulp-rimraf");
 var composer = require('gulp-composer');
 var checkFilesExist = require('check-files-exist');
 var bSync = require('browser-sync').create(); // create a browser sync instance.
@@ -26,7 +27,7 @@ paths.NPMlibJSfiles = ['./node_modules/**/jquery.min.js','./node_modules/**/jque
     './bower_components/**/knockout.js','./bower_components/**/knockout.mapping-latest.js'];
 
 paths.NPMlibCSSfiles = ['./node_modules/**/bootstrap.min.css','./node_modules/**/flickity.min.css',
-    './node_modules/**/jquery.datetimepicker.min.css'];
+                        './node_modules/**/jquery.datetimepicker.min.css','./node_modules/**/hamburgers.min.css'];
 
 paths.NPMLibSCSSFiles = ['./node_modules/**/fontawesome-free/scss/*.*'];
 paths.NPMLibFontFiles = ['./node_modules/**/fontawesome-free/webfonts/*.*'];
@@ -167,7 +168,7 @@ gulp.task('install-dev:compile-sass',function () {
 
 gulp.task('install-dev:clean', function() {
     return del.sync(['./public/lib/','./app/vendor/']);
-})
+});
 
 gulp.task('install-dev', function(callback) {
     runSequence('install-dev:clean',
@@ -224,7 +225,8 @@ gulp.task('build', function(callback) {
 
 // Deploy to local Dev environment
 gulp.task('deploy-dev:clean', function() {
-    return del.sync(paths.devTestDir,{force:true});
+    return gulp.src(paths.devTestDir, { read: false }).pipe(rimraf());
+    //return del.sync(paths.devTestDir,{force:true});
 })
 
 gulp.task('deploy-dev:copy', function() {

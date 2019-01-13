@@ -14,6 +14,7 @@
         "stripe/stripe-php": "^6.10",
         "monolog/monolog": "^1.23",
         "swiftmailer/swiftmailer": "^5.0",
-        "aws/aws-sdk-php":"^3.39"
+        "aws/aws-sdk-php":"^3.39",
+        "rspective/voucherify": "^1.7"
     }
 }

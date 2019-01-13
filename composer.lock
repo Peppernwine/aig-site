@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46cf387895e42de58ca31238115fe413",
+    "content-hash": "3bb7e849f33bb89681c7b14f090470dd",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -647,6 +647,48 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "rspective/voucherify",
+            "version": "v1.7.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voucherifyio/voucherify-php-sdk.git",
+                "reference": "91dbdec95224e232bad0a5af9de131cac63d457e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voucherifyio/voucherify-php-sdk/zipball/91dbdec95224e232bad0a5af9de131cac63d457e",
+                "reference": "91dbdec95224e232bad0a5af9de131cac63d457e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*"
+            },
+            "require-dev": {
+                "php-mock/php-mock": "1.0.*",
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Voucherify\\": "./src",
+                    "Voucherify\\Test\\Helpers\\": "./test/helpers"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP SDK for Voucherify. Please visit: www.voucherify.io",
+            "homepage": "http://www.voucherify.io/",
+            "keywords": [
+                "rspective",
+                "voucher",
+                "voucherify"
+            ],
+            "time": "2018-12-28T10:28:31+00:00"
         },
         {
             "name": "smarty/smarty",
