@@ -36,6 +36,20 @@ function validatePassword($newPassword, $repeatPassword) {
     return $errors;
 }
 
+function getUserInfo($dbConnection,$userId) {
+    $user = getUserById($dbConnection,$userId);
+    $userInfo = [];
+    if (isset($user)) {
+        $userInfo['userId']      = $user['user_id'];
+        $userInfo['emailId']     = $user['email_id'] ;
+        $userInfo['userTypeId']  = $user['user_type_id'];
+        $userInfo['firstName']   = $user['first_name'];
+        $userInfo['lastName']    = $user['last_name'];
+        $userInfo['cellPhone']   = $user['cell_phone'];
+    }
+    return $userInfo;
+}
+
 function getUserById($dbConnection, $userId) {
     $selectSQL = "SELECT * FROM user WHERE user_id = :userId";
     $statement = $dbConnection->prepare($selectSQL);

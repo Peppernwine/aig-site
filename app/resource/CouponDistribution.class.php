@@ -21,7 +21,7 @@ abstract class CouponDistribution
 
     public function distribute($userId) {
 
-        $user = getUserById($this->dbConnection, $userId) ;
+        $userInfo = getUserInfo($this->dbConnection, $userId) ;
 
         $client = new VoucherifyClientExt(VOUCHERIFY_API_ID, VOUCHERIFY_API_KEY);
 
@@ -31,11 +31,12 @@ abstract class CouponDistribution
                 "count" => 1
             ],
             "customer" => [
-                "source_id" => $user['email_id'],
-                "email" => $user['email_id'],
-                "name"  => $user['first_name'] . ' ' . $user['last_name']
+                "source_id" => $userInfo['emailId'] ,
+                "email" => $userInfo['emailId'] ,
+                "name"  => $userInfo['firstName']  . ' ' . $userInfo['lastName']
             ]
         ]);
+        //save userId, code,type,start_date,expiration_date in database
         //Notify via email/SMS with link to the coupon
         return $result;//->voucher->code;
     }

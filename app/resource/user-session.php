@@ -34,17 +34,7 @@ function getSignedinUser($dbConnection) {
 }
 
 function getSignedinUserInfo($dbConnection) {
-    $user = getUserById($dbConnection,getSignedInUserId());
-    $userInfo = [];
-    if (isset($user)) {
-        $userInfo['userId']      = $user['user_id'];
-        $userInfo['emailId']     = $user['email_id'] ;
-        $userInfo['userTypeId']  = $user['user_type_id'];
-        $userInfo['firstName']   = $user['first_name'];
-        $userInfo['lastName']    = $user['last_name'];
-        $userInfo['cellPhone']   = $user['cell_phone'];
-    }
-    return $userInfo;
+    return getUserInfo($dbConnection,getSignedInUserId());
 }
 
 function getSignedInUserId() {
