@@ -1,17 +1,15 @@
 
-
-
-function ReservationView(reservationsViewModel, data) {
+function CouponView(couponsViewModel, data) {
     var self = this;
 
-    this.reservationsViewModel = reservationsViewModel;
-    this.reservationId = ko.observable(data.reservationId);
-    this.orderHeaderId = ko.observable(data.orderHeaderId);
+    this.couponsViewModel = couponsViewModel;
+    this.customerCouponId = ko.observable(data.customerCouponId);
+    this.discountType  = ko.observable(data.discountType);
+    this.discountValue = ko.observable(data.discountValue);
     this.customerFirstName = ko.observable(data.customerFirstName);
     this.customerLastName = ko.observable(data.customerLastName);
-    this.requestDate = ko.observable(convertISO8601toDate(data.requestDate));
-    this.occasionId = ko.observable(data.occasionId);
-    this.guestCount = ko.observable(data.guestCount);
+    this.startDate = ko.observable(convertISO8601toDate(data.startDate));
+    this.expirationDate = ko.observable(convertISO8601toDate(data.expirationDate));
 
     this.getCustomerDisplayName = ko.computed(function() {
         return self.customerLastName() + ',' + self.customerFirstName()
@@ -45,7 +43,7 @@ function ReservationView(reservationsViewModel, data) {
     this.reservationURL   = ko.observable("reservationview?reservationId=" + self.reservationId());
 }
 
-function ReservationsViewModel() {
+function CouponsViewModel() {
     var self = this;
     this.periods = ['Any Date','1 Week','2 Weeks','1 Month', '3 Months','6 Months','1 Year'];
     this.periodTypes = ['and Newer','and Older'];
@@ -54,21 +52,7 @@ function ReservationsViewModel() {
     this.selPeriodType = ko.observable('and Newer');
     this.paginationToken = ko.observable('');
 
-    this.reservations = ko.observableArray([]);
-    this.occasions = [];
-
-    this.notifyOccasionsLoad = function (occasions) {
-        self.occasions = occasions;
-    };
-
-    this.getOccasionTypeCode = function (occasionId) {
-        var occasion = self.occasions.find(function(occasion) {return occasionId === occasion.occasionId });
-        if (occasion)
-            return occasion.occasionCode;
-        else
-            return '';
-
-    }
+    this.coupons = ko.observableArray([]);
 
     this.getPeriods = ko.computed(function() {
         return self.periods;
@@ -93,24 +77,24 @@ function ReservationsViewModel() {
         $.ajax({
             type: "GET",
             async:false,
-            url: 'rest-api/reservations.php',
+            url: 'rest-api/coupons.php',
             resetCurrentList : resetCurrentList,
             headers: {
                 'paginationToken':self.paginationToken(),
             },
             data: {
-                startDate: startDate,endDate:endDate
+                startDate: startDate,expirationDate:endDate
             },
-            success: function (reservations, textStatus, xhr) {
+            success: function (coupons, textStatus, xhr) {
                 self.paginationToken(xhr.getResponseHeader('paginationToken'));
-                var mappedReservations = $.map(reservations, function(reservation) {
-                    return new ReservationView(self,reservation);
+                var mappedCoupons = $.map(coupons, function(coupon) {
+                    return new CouponView(self,coupon);
                 });
 
                 if (this.resetCurrentList)
-                    self.reservations(mappedReservations);
+                    self.coupons(mappedCoupons);
                 else
-                    self.reservations(self.reservations().concat(mappedReservations));
+                    self.coupons(self.coupons().concat(mappedCoupons));
             }
         });
     }
@@ -126,4 +110,3 @@ function ReservationsViewModel() {
         this.search(false);
     }
 }
-

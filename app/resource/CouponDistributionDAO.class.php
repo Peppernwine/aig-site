@@ -39,18 +39,19 @@ class CouponDistributionDAO extends BaseDAO
     }
 
     private function gatherCouponFields($row,&$coupon) {
-        $coupon['emailId']        = $row['email_id'] ;
-        $coupon['customerId']     = $row['customer_id'] ;
-        $coupon['couponCode']     = $row['coupon_code'] ;
-        $coupon['campaignCode']   = $row['campaign_code'] ;
-        $coupon['campaignId']     = $row['campaign_id'] ;
-        $coupon['couponType']     = $row['coupon_type'] ;
-        $coupon['discountType']   = $row['discount_type'] ;
-        $coupon['discountValue']  = $row['discount_value'] ;
-        $coupon['startDate']      = $row['start_date'] ;
-        $coupon['expirationDate'] = $row['expiration_date'] ;
-        $coupon['qrCode']         = $row['qr_code'] ;
-        $coupon['qrUrl']          = $row['qr_url'] ;
+        $coupon['customerCouponId'] = $row['customer_coupon_id'] ;
+        $coupon['emailId']          = $row['email_id'] ;
+        $coupon['customerId']       = $row['customer_id'] ;
+        $coupon['couponCode']       = $row['coupon_code'] ;
+        $coupon['campaignCode']     = $row['campaign_code'] ;
+        $coupon['campaignId']       = $row['campaign_id'] ;
+        //$coupon['couponType']       = $row['coupon_type'] ;
+        $coupon['discountType']     = $row['discount_type'] ;
+        $coupon['discountValue']    = $row['discount_value'] ;
+        $coupon['startDate']        = $row['start_date'] ;
+        $coupon['expirationDate']   = $row['expiration_date'] ;
+        $coupon['qrCode']           = $row['qr_code'] ;
+        $coupon['qrUrl']            = $row['qr_url'] ;
     }
 
     private function getCouponsFromSQLRow($rows) {
@@ -120,7 +121,8 @@ class CouponDistributionDAO extends BaseDAO
              WHERE 
              (1=:noStartDateParam OR cc.start_date >= :startDate) AND 
              (1=:noExpirationDateParam OR cc.expiration_date <= :expirationDate) AND
-             (1=:noCustomerIdParam OR IFNULL(cc.customer_id,-1) = :customerId) 
+             (1=:noCustomerIdParam OR IFNULL(cc.customer_id,-1) = :customerId) AND 
+             coupon_type = \"DISCOUNT_VOUCHER\"              
              ORDER BY cc.expiration_date DESC LIMIT $offset ,$limit";
 
         $statement = $dbConnection->prepare($selectCouponsSQL);
