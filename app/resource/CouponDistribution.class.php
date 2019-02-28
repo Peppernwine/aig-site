@@ -31,14 +31,24 @@ abstract class CouponDistribution
                 "count" => 1
             ],
             "customer" => [
-                "source_id" => $userInfo['emailId'] ,
+                "source_id" => $userId,
                 "email" => $userInfo['emailId'] ,
                 "name"  => $userInfo['firstName']  . ' ' . $userInfo['lastName']
-            ]
+            ],
+            "metadata" => [
+                "emailId" => $userInfo['emailId']
+            ],
+
         ]);
         //save userId, code,type,start_date,expiration_date in database
         //Notify via email/SMS with link to the coupon
         return $result;//->voucher->code;
+    }
+
+    public function assignCoupon($coupon) {
+
+
+
     }
 
 }

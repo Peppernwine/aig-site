@@ -7,13 +7,27 @@
  */
 
 require_once dirname(__FILE__) . "/../bootstrap.php";
+require_once RESOURCE_PATH . "/database.php";
+require_once RESOURCE_PATH . "/CouponDistributionDAO.class.php";
+require_once RESOURCE_PATH . "/VoucherifyVoucherPublishedDataAdaptor.class.php";
 
 $data = file_get_contents("php://input");
 
-AIGLogger::instance()->addInfo($data);
+$data = json_decode($data,true);
+
+$voucherData = null;
+if ($data["type"] === "voucher.published") {
+
+    $adaptor = new VoucherifyVoucherPublishedDataAdaptor();
+
+    $voucherData = $adaptor->convertToAIG($data);
+    AIGLogger::instance()->addInfo("Voucher Data",$voucherData);
+
+    $couponDistDAO = new CouponDistributionDAO();
+    $couponDistDAO->saveCoupon($db,$voucherData);
+}
 
 http_response_code(200);
-
 
 /*
  * "type": "voucher.published",

@@ -106,8 +106,6 @@ function OrdersViewModel() {
         return self.periodTypes;
     },this);
 
-
-
     this.search = function (reset) {
         var startDate = '';
         var endDate = '';
